@@ -11,6 +11,14 @@
 .square {
   border: 1px black solid;
   padding: 5px;
+  font-size: 5vh;
+  min-width: 10vw;
+  min-height: 10vh;
+}
+
+.square:disabled {
+  /* stylizing clicked buttons */
+  color: inherit;
 }
 
 #reset-container {

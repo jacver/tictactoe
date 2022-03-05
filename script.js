@@ -42,35 +42,52 @@ let turn = 1;
 
 const btnReset = document.querySelector(".btn-reset");
 
-// =======================
-// ======Functions========
-// =======================
+// =============================
+// ======Event Listeners========
+// =============================
 
-// iterating through each loop to make them interactive
 squares.forEach((square) =>
-  square.addEventListener("click", function () {
-    // mark selected square with proper symbol
-    if (activePlayer === 1) {
-      square.innerText = "X";
-    } else {
-      square.innerText = "O";
-    }
-    // disable element
-    square.disabled = true;
-    // cycle activePlayer and turn counter
-    turnCounter();
+  square.addEventListener("click", () => {
+    // complete 1 turn by clicking a live square
+    runTurn(square);
   })
 );
 
-function turnCounter() {
+// reset game
+btnReset.addEventListener("click", gameInit);
+
+// ================================
+// ======Callback Functions========
+// ================================
+
+function gameInit() {
+  squares.forEach((square) => {
+    square.innerText = "";
+    square.disabled = false;
+    activePlayer = 1;
+    turn = 1;
+  });
+}
+
+function runTurn(square) {
   // alternate players based on turn # (even or odd)
   turn % 2 === 0 ? (activePlayer = 1) : (activePlayer = 2);
+
+  // mark selected square with proper symbol
+  if (activePlayer === 1) {
+    square.innerText = "X";
+  } else {
+    square.innerText = "O";
+  }
+  // disable element after selection is made
+  square.disabled = true;
+
   // add 1 to turn counter each time invoked
   turn++;
   displayActivePlayer.innerText = `${activePlayer}`;
-  // if turn hits 9 (max), send message to player and reset turns
-  if (turn === 10) {
-    console.log(`Game over - turn ${turn}`);
-    turn = 1;
-  }
+  // CHECK WIN CONDITION
+  //   if (turn === 10) {
+  //     console.log(`Game over - turn ${turn}`);
+  //     turn = 1;
+  //   }
 }
