@@ -172,3 +172,68 @@ function win() {
     ).innerText = `Player 2 Wins = ${player2Wins}`;
   }
 }
+
+// TO REFACTOR WIN CONDITION:
+/*
+
+BUILDING GRID (CSS):
+grid container{
+    display: grid
+    grid-template: "a b c" "e f g" "h i j"
+    grid-template-columns: repeat(3, 5vh)
+    grid-template-row: repeat(3, 5vh)
+}
+
+.square {
+    background-color: red
+}
+
+square:nth-child(even) {
+    background-color: blue
+}
+
+const markSquare = ev =>{ if(!ev.target.innerText){
+    ev.target.innerText = ['X', 'O'][Math.round(Math.random() ]
+  }  
+}
+
+squares.forEach(square => square.addEventListener("click", handleClick))
+
+array.from(squares) ==> nodelist to array
+
+const getValues = array.from(squares).map(square => square.innerText) ==> new array with inner values. Can harness indices .
+
+Could create a WinningCombo array. In connect 4 this needs to be create dynamically to allow for board size to change
+
+winningCombo = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],   // represents ROWS
+    [0,3,6],
+    [1,4,6],
+    [2,5,8],  // COLUMNS
+    [0,4,8],
+    [2,4,6],  // DIAGS
+]
+
+can compare winning combo array to getVALUES array above with map
+
+winningCombo.map(indices => [valuesindices[0]]], [values[indices[1]], [values[indices[2]]) each one is possibiltiies for ROWS COLS or DIAGS
+
+will return lots of arrays 
+
+const getRowsColsDiag = () => {
+    const values = getValues(squares)
+    
+
+    return winningCombo.map(indices = > [valuesindices[0]], [values[indices[1]], [values[indices[2]]
+    ]
+})
+
+// then move this function into event listener so it's run on every attempt and it gives you the "State of the game"
+  
+chaining maps and filters to clean data, add things etc 
+
+
+
+*/
