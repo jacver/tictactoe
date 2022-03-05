@@ -192,6 +192,8 @@ square:nth-child(even) {
     background-color: blue
 }
 
+declare global variable gameWon = false // change to true when win condition is met
+
 const markSquare = ev =>{ if(!ev.target.innerText){
     ev.target.innerText = ['X', 'O'][Math.round(Math.random() ]
   }  
@@ -201,7 +203,13 @@ squares.forEach(square => square.addEventListener("click", handleClick))
 
 array.from(squares) ==> nodelist to array
 
-const getValues = array.from(squares).map(square => square.innerText) ==> new array with inner values. Can harness indices .
+const getValues = array.from(squares which is a nodelist still).map(square => square.innerText) ==> new array with inner values. Can harness indices .
+
+const markSquare = ev => {
+    if (!ev.target.innerText) {
+        ev.target.innerText = ["X", "O"]
+    }
+}
 
 Could create a WinningCombo array. In connect 4 this needs to be create dynamically to allow for board size to change
 
@@ -234,6 +242,10 @@ const getRowsColsDiag = () => {
   
 chaining maps and filters to clean data, add things etc 
 
+if
+
+1) grab all cells and group together
+2) squares.forEach()
 
 
 */
